@@ -138,17 +138,22 @@
     "coinType": {
       "gp": "GP",
       "sp": "SP",
-      "cp": "CP"
+      "cp": "CP",
+      "cash": "€"
     },
     "damageDice": {
       "oneDmg": "1",
-      "d6minus3": "1d6-3",
-      "d6minus2": "1d6-2",
-      "d6minus1": "1d6-1",
+      "d3": "1d3",
+      "d4": "1d4",
       "d6": "1d6",
-      "d6plus1": "1d6+1",
-      "d6plus2": "1d6+2",
-      "d6plus3": "1d6+3"
+      "twd6": "2d6",
+      "thd6": "3d6",
+      "d8": "1d8",
+      "fd8": "4d8",
+      "d10": "1d10",
+      "twd10": "2d10",
+      "d12": "1d12",
+      "twd12": "2d12"
     },
     "weightTypes": {
       "regular": "Stone",
