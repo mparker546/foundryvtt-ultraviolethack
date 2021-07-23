@@ -2,9 +2,9 @@ import * as c from "./constants.js";
 
 class WHItem extends Item {
   chatTemplate = {
-    [c.GEAR]: "systems/whitehack3e/templates/chat/item-info.hbs",
-    [c.ABILITY]: "systems/whitehack3e/templates/chat/item-info.hbs",
-    [c.ARMOUR]: "systems/whitehack3e/templates/chat/armour-info.hbs",
+    [c.GEAR]: "systems/ultraviolethack/templates/chat/item-info.hbs",
+    [c.ABILITY]: "systems/ultraviolethack/templates/chat/item-info.hbs",
+    [c.armor]: "systems/ultraviolethack/templates/chat/armor-info.hbs",
   };
 
   /**
@@ -16,7 +16,7 @@ class WHItem extends Item {
     if (!this.data.img || this.data.img == c.ITEMBAG) {
       const abilityTypeIcons = {
         [c.ABILITY]: [c.DEFAULTABILITYIMAGE],
-        [c.ARMOUR]: [c.DEFAULTARMOURIMAGE],
+        [c.armor]: [c.DEFAULTarmorIMAGE],
         [c.GEAR]: [c.DEFAULTGEARIMAGE],
         [c.WEAPON]: [c.DEFAULTWEAPONIMAGE],
       };

@@ -56,7 +56,7 @@
         }
       },
       "combat": {
-        "armourClass": 0,
+        "armorClass": 0,
         "attackValue": 10
       },
       "savingThrow": 5,
@@ -74,15 +74,13 @@
         "stored": 0
       },
       "coin": {
-        "gp": 0,
-        "sp": 0,
-        "cp": 0
+        "cash": 0
       }
     },
     "Monster": {
       "templates": ["base"],
       "combat": {
-        "armourClass": 0,
+        "armorClass": 0,
         "attackValue": 11,
         "hitDice": {
           "base": 1,
@@ -101,12 +99,12 @@
     }
   },
   "Item": {
-    "types": ["Ability", "Armour", "Gear", "Weapon"],
+    "types": ["Ability", "armor", "Gear", "Weapon"],
     "templates": {
       "equipmentBase": {
         "description": "",
         "cost": 0,
-        "costCoinType": "GP",
+        "costCoinType": "€",
         "weight": "regular",
         "equippedStatus": "stored"
       }
@@ -118,9 +116,9 @@
       "rateOfFire": "",
       "special": ""
     },
-    "Armour": {
+    "armor": {
       "templates": ["equipmentBase"],
-      "armourClass": 0
+      "armorClass": 0
     },
     "Gear": {
       "templates": ["equipmentBase"],

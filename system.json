@@ -10,9 +10,9 @@
   "styles": ["css/wh3e.css"],
   "packs": [
     {
-      "name": "armour",
-      "label": "Armour",
-      "path": "/packs/armour.db",
+      "name": "armor",
+      "label": "armor",
+      "path": "/packs/armor.db",
       "entity": "Item"
     },
     {

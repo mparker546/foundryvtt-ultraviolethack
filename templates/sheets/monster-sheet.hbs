@@ -4,10 +4,10 @@
     <div class="header-info">
       <h1 class="charname"><input name="name" type="text" value="{{name}}" placeholder="Name" /></h1>
       <div class="grid grid-4col">
-        <div class="flex-group-center" title="{{localize "wh3e.item.armourClass"}}">
-          <label for="data.combat.armourClass">{{localize "wh3e.actor.armourClass"}}</label>
+        <div class="flex-group-center" title="{{localize "wh3e.item.armorClass"}}">
+          <label for="data.combat.armorClass">{{localize "wh3e.actor.armorClass"}}</label>
           <div class="flexrow flex-center">
-            {{> selectOptions field="data.combat.armourClass" selected=data.combat.armourClass options=config.monsterArmourClasses}}
+            {{> selectOptions field="data.combat.armorClass" selected=data.combat.armorClass options=config.monsterarmorClasses}}
           </div>
         </div>
         <div class="flex-group-center">

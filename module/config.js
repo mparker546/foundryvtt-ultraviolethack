@@ -21,10 +21,10 @@ export const wh3e = {
     twd12: "wh3e.damageDice.twd12",
   },
   weaponWeightTypes: {
+    negligible: "wh3e.weightTypes.negligible",
+    small: "wh3e.weightTypes.small",
     regular: "wh3e.weightTypes.regular",
     heavy: "wh3e.weightTypes.heavy",
-    small: "wh3e.weightTypes.small",
-    negligible: "wh3e.weightTypes.negligible",
   },
   gearWeightTypes: {
     regular: "wh3e.weightTypes.regular",
@@ -51,11 +51,9 @@ export const wh3e = {
     affiliation: "wh3e.abilityType.affiliation",
   },
   coinTypes: {
-    gp: "wh3e.coinType.gp",
-    sp: "wh3e.coinType.sp",
-    cp: "wh3e.coinType.cp",
+    cash: "wh3e.coinType.cash",
   },
-  armourClasses: {
+  armorClasses: {
     0: "0",
     1: "1",
     2: "2",
@@ -63,10 +61,12 @@ export const wh3e = {
     4: "4",
     5: "5",
     6: "6",
+    7: "7",
+    8: "8",
     plusOne: "+1",
     special: "wh3e.item.special",
   },
-  monsterArmourClasses: {
+  monsterarmorClasses: {
     0: "0",
     1: "1",
     2: "2",

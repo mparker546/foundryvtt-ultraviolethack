@@ -149,13 +149,13 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   let targetAC = 0;
   if (game.user.targets.size === 1) {
     for (let t of game.user.targets.values()) {
-      targetAC = t.sheet.actor.data.data.combat.armourClass;
+      targetAC = t.sheet.actor.data.data.combat.armorClass;
       targetName = t.nameplate.text;
     }
   }
 
   const toHitTarget = actor.data.data.combat.attackValue + strMod + toHitMod;
-  const rollTemplate = "systems/whitehack3e/templates/chat/attack-roll.hbs";
+  const rollTemplate = "systems/ultraviolethack/templates/chat/attack-roll.hbs";
 
   // To Hit Roll
   const toHitRoll = await new Roll(getDiceToRoll(rollType), rollData).evaluate({ async: true });
@@ -181,7 +181,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     formula: getRollTypeText(rollType, toHitRoll.formula),
     rollResult: toHitResult,
     toHitHeader: `${toHitHeader} ${toHitResultCategoryWith}`,
-    rollResultColour: toHitOutcome === c.SUCCESS ? c.WHITE : c.RED,
+    rollResultColour: toHitOutcome === c.SUCCESS ? c.GREEN : c.RED,
   };
 
   if (toHitOutcome === c.SUCCESS) {
@@ -240,7 +240,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
     rollValue = actor.data.data.attributes[rollFor].value;
   }
   const rollTarget = rollValue + rollMod;
-  const rollTemplate = "systems/whitehack3e/templates/chat/task-roll.hbs";
+  const rollTemplate = "systems/ultraviolethack/templates/chat/task-roll.hbs";
 
   // Check for extreme score
   if (rollTarget < 1) {
@@ -267,7 +267,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
     formula: getRollTypeText(rollType, roll.formula),
     rollResult: rollResult,
     resultHeader: resultHeader,
-    rollResultColour: rollOutcome === c.SUCCESS ? c.WHITE : c.RED,
+    rollResultColour: rollOutcome === c.SUCCESS ? c.GREEN : c.RED,
   };
 
   if (game.dice3d) {
@@ -380,7 +380,7 @@ const getToHitResultHeader = (toHitOutcome, toHitResult, weapon, toHitTarget, ta
       if (toHitResult > targetAC) {
         resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.misses")} ${targetName}`;
       } else {
-        resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.blockedByArmour")} ${targetName}`;
+        resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.blockedByarmor")} ${targetName}`;
       }
     } else {
       resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.misses")}`;

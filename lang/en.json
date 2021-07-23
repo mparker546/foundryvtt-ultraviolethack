@@ -26,7 +26,7 @@
       "defaultSpecies": "Human",
       "savingThrow": "ST",
       "attackValue": "AV",
-      "armourClass": "AC",
+      "armorClass": "AC",
       "movement": "MV",
       "encumbrance": "Encumbrance",
       "corruption": "CL",
@@ -67,7 +67,7 @@
       "gear": "Gear",
       "abilities": "Abilities",
       "weapons": "Weapons",
-      "armour": "Armour",
+      "armor": "Armor",
       "notes": "Notes"
     },
     "sheet": {
@@ -86,10 +86,10 @@
       "newWeapon": "New Weapon",
       "editWeapon": "Edit Weapon",
       "deleteWeapon": "Delete Weapon",
-      "addArmour": "Add Armour",
-      "newArmour": "New Armour",
-      "editArmour": "Edit Armour",
-      "deleteArmour": "Delete Armour",
+      "addarmor": "Add Armor",
+      "newarmor": "New Armor",
+      "editarmor": "Edit Armor",
+      "deletearmor": "Delete Armor",
       "monsterNPC": "Monster/NPC",
       "update": "Update",
       "cancel": "Cancel",
@@ -106,7 +106,7 @@
       "hits": "hits",
       "with": "with",
       "misses": "misses",
-      "blockedByArmour": "is blocked by armour vs",
+      "blockedByarmor": "is blocked by Armor vs",
       "hitsAC": "hits AC",
       "hitsFor": "hits for",
       "damage": "damage",
@@ -129,16 +129,13 @@
       "melee": "Melee",
       "notes": "Notes",
       "type": "Type",
-      "armourClass": "Armour Class",
+      "armorClass": "Armor Class",
       "active": "Active",
       "equipped": "Equipped",
       "stored": "Stored",
       "quantity": "Quantity"
     },
     "coinType": {
-      "gp": "GP",
-      "sp": "SP",
-      "cp": "CP",
       "cash": "€"
     },
     "damageDice": {
@@ -156,10 +153,10 @@
       "twd12": "2d12"
     },
     "weightTypes": {
+      "negligible": "Negligible",
+      "small": "Soap",
       "regular": "Stone",
       "heavy": "Sack",
-      "small": "Soap",
-      "negligible": "Negligible",
       "noEncumbrance": "---"
     },
     "burdenCategory": {
@@ -177,7 +174,7 @@
       "one": "1",
       "three": "3"
     },
-    "armourClasses": {
+    "armorClasses": {
       "0": "0",
       "1": "1",
       "2": "2",
@@ -219,7 +216,7 @@
       "speciesInput": "Updated from first species added in abilities tab",
       "savingThrow": "Saving Throw",
       "corruptionLevel": "Corruption Level",
-      "armourClass": "Armour Class (calculated from Armour and Shield)",
+      "armorClass": "Armor Class (calculated from Armor and Shield)",
       "attackValue": "Attack Value",
       "initiative": "Initiative",
       "movement": "Movement",

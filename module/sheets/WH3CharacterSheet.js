@@ -1,11 +1,11 @@
-import { updateActorGroups, updateActorEncumbrance, updateActorArmourClass } from "../helpers/itemHelpers.js";
+import { updateActorGroups, updateActorEncumbrance, updateActorarmorClass } from "../helpers/itemHelpers.js";
 import { rollModDialog, attackRollDialog } from "../helpers/diceHelpers.js";
 import * as c from "../constants.js";
 
 export default class WH3CharacterSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      template: "systems/whitehack3e/templates/sheets/character-sheet.hbs",
+      template: "systems/ultraviolethack/templates/sheets/character-sheet.hbs",
       classes: ["wh3e", "sheet", "character"],
       width: 630,
       height: 625,
@@ -30,9 +30,9 @@ export default class WH3CharacterSheet extends ActorSheet {
     actorData.hasGroups = !!actorData.abilities.filter((item) => {
       return groups.includes(item.data.type);
     });
-    actorData.armour = data.items.filter((item) => item.type === c.ARMOUR);
+    actorData.armor = data.items.filter((item) => item.type === c.armor);
     if (!actorData.data.basics.species) {
-      actorData.data.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
+      actorData.data.basics.species = game.settings.get("ultraviolethack", "defaultSpecies");
     }
     actorData.charClass = actorData.data.basics.class;
     actorData.hasToken = !(this.token === null);
@@ -95,10 +95,10 @@ export default class WH3CharacterSheet extends ActorSheet {
       itemData.data.equippedStatus = c.STORED;
     }
 
-    if (type === c.ARMOUR) {
-      itemData.data.armourClass = 0;
+    if (type === c.armor) {
+      itemData.data.armorClass = 0;
       itemData.data.equippedStatus = c.STORED;
-      itemData.img = c.DEFAULTARMOURIMAGE;
+      itemData.img = c.DEFAULTarmorIMAGE;
     }
 
     if (type === c.WEAPON) {
@@ -223,7 +223,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       },
     });
     await updateActorEncumbrance(this.actor);
-    await updateActorArmourClass(this.actor);
+    await updateActorarmorClass(this.actor);
   }
 
   /**
