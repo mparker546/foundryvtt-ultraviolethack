@@ -13,6 +13,7 @@ async function preloadHandlebarsTemplates() {
   const templatePaths = [
     "systems/ultraviolethack/templates/partials/character-header.hbs",
     "systems/ultraviolethack/templates/partials/character-stats.hbs",
+    "systems/ultraviolethack/templates/partials/character-bonus.hbs",
     "systems/ultraviolethack/templates/partials/ability-info.hbs",
     "systems/ultraviolethack/templates/partials/weapon-info.hbs",
     "systems/ultraviolethack/templates/partials/gear-info.hbs",

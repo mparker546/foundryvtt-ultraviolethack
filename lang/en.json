@@ -7,7 +7,9 @@
       "dex": "DEX",
       "con": "CON",
       "cha": "CHA",
-      "score": "Score"
+      "score": "Score",
+      "bonus": "Bonus",
+      "damage" : "Damage"
     },
     "resource": {
       "gear": "Gear",
@@ -30,6 +32,7 @@
       "movement": "MV",
       "encumbrance": "Encumbrance",
       "corruption": "CL",
+      "fortune": "Fortune",
       "hitDice": "Hit Dice",
       "xp": "Experience Points",
       "nextLevel": "Next level",
@@ -62,6 +65,7 @@
     },
     "category": {
       "attributes": "Attributes",
+      "attributeBonus": "Bonus",
       "attr": "Attr",
       "description": "Description",
       "gear": "Gear",
@@ -224,6 +228,7 @@
       "encStored": "Encumbrance of Stored Items (Max 5)",
       "hpCurrent": "Current HP",
       "hpMax": "Maximum HP",
+      "fortune": "Fortune",
       "xpCurrent": "Current XP",
       "xpNextLevel": "XP for next level",
       "strMod": "AV bonus/Damage bonus",

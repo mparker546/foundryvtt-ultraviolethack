@@ -236,7 +236,10 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   let rollValue = 0;
   if (rollFor === c.SAVINGTHROW) {
     rollValue = actor.data.data.savingThrow;
-  } else {
+  } else if (rollFor === c.Fortune) {
+      rollValue = actor.data.data.fortune;
+    }
+   else {
     rollValue = actor.data.data.attributes[rollFor].value;
   }
   const rollTarget = rollValue + rollMod;
@@ -341,7 +344,10 @@ const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne,
   let resultHeader = c.EMPTYSTRING;
   if (rollFor === c.SAVINGTHROW) {
     resultHeader ="Saving throw with a score of ";
-  } else {
+  } else if (rollFor === c.FORTUNE) {
+    resultHeader ="Fortune Roll with a bonus of ";
+  }
+  else {
     resultHeader = rollFor.toUpperCase() + " task roll with a score of ";
   }
   return (

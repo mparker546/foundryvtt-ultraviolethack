@@ -153,8 +153,10 @@ export default class WH3CharacterSheet extends ActorSheet {
   async _attributeChangeHandler(event) {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
+    const attrBonus = event.currentTarget.Bonus;
     let modObj = { [attrName + c.MOD]: 0 };
 
+    // Whtehack Attribute Mods
     // Set STR modifiers for attack and damage
     if (attrName === c.STR) {
       let strMod = 0,
@@ -191,6 +193,170 @@ export default class WH3CharacterSheet extends ActorSheet {
             [attrName]: {
               mod: modObj[attrName + c.MOD],
               value: attrValue,
+            },
+          },
+        },
+      });
+    };
+    ///Attribute Bonuses
+    if (attrName === c.STR) {
+      let strBonus = 0;
+      if (attrValue >= 18) {
+        strBonus = 4;}
+        else if (attrValue >= 16) {
+          strBonus = 3;}
+          else if (attrValue >= 14) {
+            strBonus = 3;}
+            else if (attrValue >= 12) {
+              strBonus = 1;}
+              else if (attrValue >= 9) {
+                strBonus = 0;}
+                else if (attrValue >= 7) {
+                  strBonus = -1;}
+                  else if (attrValue >= 5) {
+                    strBonus = -2;}
+                    else if (attrValue >= 3) {
+                      strBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            str: {
+              bonus: strBonus,
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.DEX) {
+      let dexBonus = 0;
+      if (attrValue >= 18) {
+        dexBonus = 4;}
+        else if (attrValue >= 16) {
+          dexBonus = 3;}
+          else if (attrValue >= 14) {
+            dexBonus = 3;}
+            else if (attrValue >= 12) {
+              dexBonus = 1;}
+              else if (attrValue >= 9) {
+                dexBonus = 0;}
+                else if (attrValue >= 7) {
+                  dexBonus = -1;}
+                  else if (attrValue >= 5) {
+                    dexBonus = -2;}
+                    else if (attrValue >= 3) {
+                      dexBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            str: {
+              bonus: dexBonus,
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.CON) {
+      let conBonus = 0;
+      if (attrValue >= 18) {
+        conBonus = 4;}
+        else if (attrValue >= 16) {
+          conBonus = 3;}
+          else if (attrValue >= 14) {
+            conBonus = 3;}
+            else if (attrValue >= 12) {
+              conBonus = 1;}
+              else if (attrValue >= 9) {
+                conBonus = 0;}
+                else if (attrValue >= 7) {
+                  conBonus = -1;}
+                  else if (attrValue >= 5) {
+                    conBonus = -2;}
+                    else if (attrValue >= 3) {
+                      conBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            str: {
+              bonus: conBonus,
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.INT) {
+      let intBonus = 0;
+      if (attrValue >= 18) {
+        intBonus = 4;}
+        else if (attrValue >= 16) {
+          intBonus = 3;}
+          else if (attrValue >= 14) {
+            intBonus = 3;}
+            else if (attrValue >= 12) {
+              intBonus = 1;}
+              else if (attrValue >= 9) {
+                intBonus = 0;}
+                else if (attrValue >= 7) {
+                  intBonus = -1;}
+                  else if (attrValue >= 5) {
+                    intBonus = -2;}
+                    else if (attrValue >= 3) {
+                      intBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            str: {
+              bonus: intBonus,
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.WIS) {
+      let wisBonus = 0;
+      if (attrValue >= 18) {
+        wisBonus = 4;}
+        else if (attrValue >= 16) {
+          wisBonus = 3;}
+          else if (attrValue >= 14) {
+            wisBonus = 3;}
+            else if (attrValue >= 12) {
+              wisBonus = 1;}
+              else if (attrValue >= 9) {
+                wisBonus = 0;}
+                else if (attrValue >= 7) {
+                  wisBonus = -1;}
+                  else if (attrValue >= 5) {
+                    wisBonus = -2;}
+                    else if (attrValue >= 3) {
+                      wisBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            str: {
+              bonus: wisBonus,
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.CHA) {
+      let chaBonus = 0;
+      if (attrValue >= 18) {
+        chaBonus = 4;}
+        else if (attrValue >= 16) {
+          chaBonus = 3;}
+          else if (attrValue >= 14) {
+            chaBonus = 3;}
+            else if (attrValue >= 12) {
+              chaBonus = 1;}
+              else if (attrValue >= 9) {
+                chaBonus = 0;}
+                else if (attrValue >= 7) {
+                  chaBonus = -1;}
+                  else if (attrValue >= 5) {
+                    chaBonus = -2;}
+                    else if (attrValue >= 3) {
+                      chaBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            str: {
+              bonus: chaBonus,
             },
           },
         },

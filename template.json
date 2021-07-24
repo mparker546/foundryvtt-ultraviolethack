@@ -26,32 +26,38 @@
         "str": {
           "value": 10,
           "mod": 0,
+          "bonus": 0,
           "dmgMod": 0,
           "groups": ""
         },
         "dex": {
           "value": 10,
           "mod": 0,
+          "bonus": 0,
           "groups": ""
         },
         "con": {
           "value": 10,
           "mod": 0,
+          "bonus": 0,
           "groups": ""
         },
         "int": {
           "value": 10,
           "mod": 0,
+          "bonus": 0,
           "groups": ""
         },
         "wis": {
           "value": 10,
           "mod": 0,
+          "bonus": 0,
           "groups": ""
         },
         "cha": {
           "value": 10,
           "mod": 0,
+          "bonus": 0,
           "groups": ""
         }
       },
@@ -68,6 +74,9 @@
       "corruptionLevel": {
         "value": 0,
         "disorders": ""
+      },
+      "fortuneBonus": {
+        "bonus": 0
       },
       "encumbrance": {
         "equipped": 0,

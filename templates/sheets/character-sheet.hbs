@@ -8,6 +8,9 @@
     <a class="item" data-tab="attributes">
       {{localize "wh3e.category.attributes"}}
     </a>
+    <a class="item" data-tab="modifiers">
+      {{localize "wh3e.category.attributeBonus"}}
+    </a>
     <a class="item" data-tab="abilities">
       {{localize "wh3e.category.abilities"}}
     </a>
@@ -27,6 +30,7 @@
 
   <div class="sheet-content">
     {{> "systems/ultraviolethack/templates/partials/character-stats.hbs"}}
+    {{> "systems/ultraviolethack/templates/partials/character-bonus.hbs"}}
     {{> "systems/ultraviolethack/templates/partials/ability-info.hbs"}}
     {{> "systems/ultraviolethack/templates/partials/weapon-info.hbs"}}
     {{> "systems/ultraviolethack/templates/partials/armor-info.hbs"}}
