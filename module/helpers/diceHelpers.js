@@ -340,9 +340,9 @@ const getDiceToRoll = (rollType) => {
 const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo, rollOutcome) => {
   let resultHeader = c.EMPTYSTRING;
   if (rollFor === c.SAVINGTHROW) {
-    resultHeader ="Saving throw with a base score of ";
+    resultHeader ="Saving throw with a score of ";
   } else {
-    resultHeader = rollFor.toUpperCase() + " task roll with a base score of ";
+    resultHeader = rollFor.toUpperCase() + " task roll with a score of ";
   }
   return (
     resultHeader +
@@ -413,14 +413,14 @@ const getDamageResultHeader = (weapon, damageResult) => {
 const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, diceOutcome, rollFor = null) => {
   let category = [];
   if (diceOutcome === c.SUCCESS) {
-    let extremeRollQuality = game.i18n.localize("wh3e.dice.withQuality") + " " + (rollResult+rollTarget).toString();
+    let extremeRollQuality = game.i18n.localize("wh3e.dice.withQuality") + " " + (parseInt(rollResult)+parseInt(rollTarget)).toString();
     if (diceOne === diceTwo && rollType === c.DOUBLEPOSITIVE && diceOutcome === c.SUCCESS) {
       category.push(game.i18n.localize("wh3e.dice.successfulPositivePair"));
     }
     // If extreme roll will crit on 19, so target becomes 19
     if (rollTarget >= 20) {
       extremeRollQuality =
-        game.i18n.localize("wh3e.dice.withQuality") + " " + (rollResult + rollTarget).toString();
+        game.i18n.localize("wh3e.dice.withQuality") + " " + (parseInt(rollResult)+parseInt(rollTarget)).toString();
       rollTarget = 19;
     }
     if (rollResult === rollTarget) {
@@ -441,7 +441,8 @@ const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, d
       category.push(game.i18n.localize("wh3e.dice.fumble"));
     }
     if (category.length === 0 && rollFor) {
-      category.push(game.i18n.localize("wh3e.dice.failure"));
+      category.push(game.i18n.localize("wh3e.dice.failure") + " " + game.i18n.localize("wh3e.dice.withQuality") + " " +
+      (parseInt(rollResult)+parseInt(rollTarget)).toString());
     }
   }
   return category.join(" ");
