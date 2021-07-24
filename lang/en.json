@@ -205,7 +205,7 @@
       "failure": "Failure",
       "savingThrowVsTarget": "Saving throw vs target",
       "taskRollVsTarget": "task roll vs target",
-      "withQuality": "with quality"
+      "withQuality": "with a result of"
     },
     "errors": {
       "modsNotNumbers": "Modifiers must be numbers",

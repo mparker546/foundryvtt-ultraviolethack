@@ -181,7 +181,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     formula: getRollTypeText(rollType, toHitRoll.formula),
     rollResult: toHitResult,
     toHitHeader: `${toHitHeader} ${toHitResultCategoryWith}`,
-    rollResultColour: toHitOutcome === c.SUCCESS ? c.GREEN : c.RED,
+    rollResultColour: toHitOutcome === c.SUCCESS ? c.LIGHTGREY : c.DARKRED,
   };
 
   if (toHitOutcome === c.SUCCESS) {
@@ -267,7 +267,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
     formula: getRollTypeText(rollType, roll.formula),
     rollResult: rollResult,
     resultHeader: resultHeader,
-    rollResultColour: rollOutcome === c.SUCCESS ? c.GREEN : c.RED,
+    rollResultColour: rollOutcome === c.SUCCESS ? c.LIGHTGREY : c.DARKRED,
   };
 
   if (game.dice3d) {
@@ -368,7 +368,7 @@ const getToHitResultHeader = (toHitOutcome, toHitResult, weapon, toHitTarget, ta
   // To handle extreme rolls where AV is greater than 20
   if (toHitTarget >= 20) {
     // Add over 20 to quality
-    acHit = acHit + toHitTarget - 20;
+    acHit = acHit + toHitTarget;
   }
   let resultHeader = `${weapon} ${attackVsTarget} ${hitsAC} ${acHit}`;
   if (toHitOutcome === c.SUCCESS) {
@@ -413,14 +413,14 @@ const getDamageResultHeader = (weapon, damageResult) => {
 const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, diceOutcome, rollFor = null) => {
   let category = [];
   if (diceOutcome === c.SUCCESS) {
-    let extremeRollQuality = game.i18n.localize("wh3e.dice.withQuality") + " " + rollResult.toString();
+    let extremeRollQuality = game.i18n.localize("wh3e.dice.withQuality") + " " + (rollResult+rollTarget).toString();
     if (diceOne === diceTwo && rollType === c.DOUBLEPOSITIVE && diceOutcome === c.SUCCESS) {
       category.push(game.i18n.localize("wh3e.dice.successfulPositivePair"));
     }
     // If extreme roll will crit on 19, so target becomes 19
     if (rollTarget >= 20) {
       extremeRollQuality =
-        game.i18n.localize("wh3e.dice.withQuality") + " " + (rollResult + rollTarget - 20).toString();
+        game.i18n.localize("wh3e.dice.withQuality") + " " + (rollResult + rollTarget).toString();
       rollTarget = 19;
     }
     if (rollResult === rollTarget) {
