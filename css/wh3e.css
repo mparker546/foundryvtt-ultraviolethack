@@ -544,10 +544,12 @@ input.center-text {
   font-size: 0.75em;
 }
 .character .stats,
+.character .bonus,
 .monster .stats {
   background-color: rgba(0, 0, 0, 0.2);
 }
 .character .stats .headings,
+.character .bonus .headings,
 .monster .stats .headings {
   background: rgba(0, 0, 0, 0.5);
   color: #f0f0e0;
@@ -555,7 +557,8 @@ input.center-text {
   border-bottom: 1px solid #000;
 }
 .character .stats .headings span,
-.monster .stats .headings span {
+.monster .stats .headings span,
+.character .bonus .headings span {
   font-weight: bold;
 }
 .character .stats .attribute .groups,
@@ -585,7 +588,8 @@ input.center-text {
   border-left-color: #dbd196;
 }
 .character .stats .attribute input,
-.monster .stats .attribute input {
+.monster .stats .attribute input,
+.character .bonus .bonus input, {
   height: 32px;
 }
 .character .sheet-header {

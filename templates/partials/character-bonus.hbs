@@ -4,6 +4,7 @@
       <span class="flex-grow1">{{localize "wh3e.category.attr"}}</span>
       <span class="flex-grow1">{{localize "wh3e.attribute.bonus"}}</span>
       <span class="flex-grow1">{{localize "wh3e.attribute.damage"}}</span>
+      <span class="flex-grow2">{{" "}}</span>
     </div>
      {{#each data.attributes as |attribute key|}}
     <div class="attributeBonus flexrow flex-group-center">
@@ -13,9 +14,11 @@
           class="flex-grow1 bonus read-only" readonly="readonly"/>
       <input type="text" name="data.attribute.{{key}}.damage" value="{{attribute.damage}}" data-dtype="Number"
           class="flex-grow1 attribute-damage" />
+      <div class="flex-grow1"></div>
     </div>
     {{/each}}
     <div class="fortune flexrow flex-group-center">
+      <div class="col-1"></div>
         <label for="data.fortune" class="rollable fortune" data-roll-for="fortune"><i
              class="fas fa-dice"></i>&nbsp;{{localize
               "wh3e.actor.fortune"}}</label>
@@ -23,6 +26,7 @@
           <input type="text" name="data.fortune" value="{{data.fortune}}" data-dtype="Number"
                  title="{{localize "wh3e.tooltip.fortune"}}" />
         </div>
+        <div class="flex-grow3"></div>
     </div>
   </div>
 </div>
