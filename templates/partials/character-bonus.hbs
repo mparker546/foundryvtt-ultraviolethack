@@ -11,8 +11,8 @@
       <label for="data.attributes.{{key}}.bonus" class="flex-grow1 rollable" data-roll-for="{{key}}"><span
           class="fas fa-dice"></span>{{getTextFromKey "wh3e.attribute" key}}</label>
       <input type="text" name="data.attributes.{{key}}.bonus" value="{{attribute.bonus}}" data-dtype="Number"
-          class="flex-grow1 bonus read-only" readonly="readonly"/>
-      <input type="text" name="data.attribute.{{key}}.damage" value="{{attribute.damage}}" data-dtype="Number"
+          class="flex-grow1 attribute-bonus" />
+      <input type="text" name="data.attributes.{{key}}.damage" value="{{attribute.damage}}" data-dtype="Number"
           class="flex-grow1 attribute-damage" />
       <div class="flex-grow1"></div>
     </div>

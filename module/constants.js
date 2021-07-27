@@ -15,6 +15,7 @@ export const INT = "int";
 export const WIS = "wis";
 export const CHA = "cha";
 export const MOD = "Mod";
+export const BONUS = "Bonus";
 export const REGULAR = "regular";
 export const HEAVY = "heavy";
 export const MINOR = "minor";

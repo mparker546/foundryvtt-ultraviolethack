@@ -50,6 +50,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".item-edit").click(this._itemEditHandler.bind(this));
       html.find(".item-delete").click(this._itemDeleteHandler.bind(this));
       html.find(".attribute-score").change(this._attributeChangeHandler.bind(this));
+//      html.find(".attribute-bonus").change(this._attributeBonusHandler.bind(this));
       html.find(".ability-activated i").click(this._abilityChangeStatusHandler.bind(this));
       html.find(".equippable i").click(this._gearChangeEquippedStatusHandler.bind(this));
       html.find(".manage-groups").click(this._groupsChangeHandler.bind(this));
@@ -153,9 +154,7 @@ export default class WH3CharacterSheet extends ActorSheet {
   async _attributeChangeHandler(event) {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
-    const attrBonus = event.currentTarget.Bonus;
     let modObj = { [attrName + c.MOD]: 0 };
-
     // Whtehack Attribute Mods
     // Set STR modifiers for attack and damage
     if (attrName === c.STR) {
@@ -198,30 +197,35 @@ export default class WH3CharacterSheet extends ActorSheet {
         },
       });
     };
+  };
     ///Attribute Bonuses
+/**  async _attributeBonusHandler(event) {
+    const attrBonus = event.currentTarget.Bonus;
+    let bonusObj = { [attrName + c.BONUS]: 0 };
+
     if (attrName === c.STR) {
       let strBonus = 0;
       if (attrValue >= 18) {
         strBonus = 4;}
-        else if (attrValue >= 16) {
+        if (attrValue >= 16) {
           strBonus = 3;}
-          else if (attrValue >= 14) {
+          if (attrValue >= 14) {
             strBonus = 3;}
-            else if (attrValue >= 12) {
+            if (attrValue >= 12) {
               strBonus = 1;}
-              else if (attrValue >= 9) {
+              if (attrValue >= 9) {
                 strBonus = 0;}
-                else if (attrValue >= 7) {
+                if (attrValue >= 7) {
                   strBonus = -1;}
-                  else if (attrValue >= 5) {
+                  if (attrValue >= 5) {
                     strBonus = -2;}
-                    else if (attrValue >= 3) {
+                    if (attrValue >= 3) {
                       strBonus = -3}
       await this.actor.update({
         data: {
           attributes: {
-            str: {
-              bonus: strBonus,
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
             },
           },
         },
@@ -247,8 +251,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       await this.actor.update({
         data: {
           attributes: {
-            str: {
-              bonus: dexBonus,
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
             },
           },
         },
@@ -274,8 +278,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       await this.actor.update({
         data: {
           attributes: {
-            str: {
-              bonus: conBonus,
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
             },
           },
         },
@@ -301,8 +305,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       await this.actor.update({
         data: {
           attributes: {
-            str: {
-              bonus: intBonus,
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
             },
           },
         },
@@ -328,8 +332,8 @@ export default class WH3CharacterSheet extends ActorSheet {
       await this.actor.update({
         data: {
           attributes: {
-            str: {
-              bonus: wisBonus,
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
             },
           },
         },
@@ -355,15 +359,15 @@ export default class WH3CharacterSheet extends ActorSheet {
       await this.actor.update({
         data: {
           attributes: {
-            str: {
-              bonus: chaBonus,
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
             },
           },
         },
       });
     }
   }
-
+**/
   /**
    * Update active status for ability
    * @param {Object} event

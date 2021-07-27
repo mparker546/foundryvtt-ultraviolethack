@@ -3,11 +3,10 @@
   "title": "Ultraviolethack (UVG & Whitehack 3E)",
   "description": "A system for exploring the Ultravolet Grasslands with Whitehack Third Edition",
   "author": " Whitehack Neil Benson (@OldScouserRPing) | Ultraviolet Grasslands by Luka Rejec | Hack by Michael Parker",
-  "version": "1.2.4",
+  "version": "0.8.4",
   "minimumCoreVersion": "0.8.6",
   "compatibleCoreVersion": "0.8.8",
-  "esmodules": ["wh3e.js"],
-  "styles": ["css/wh3e.css"],
+    "styles": ["css/ultraviolethack.css"],
   "packs": [
     {
       "name": "armor",
