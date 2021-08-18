@@ -1,0 +1,33 @@
+<div class="tab armor" data-group="primary" data-tab="armor">
+  <table class="fixed_header">
+    <thead>
+      <tr>
+        <th class="item-image"></th>
+        <th class="align-left armor-name">{{localize "wh3e.item.name"}}</th>
+        <th class="armor-ac">{{localize "wh3e.item.armorClass"}}</th>
+        <th class="equippable">{{localize "wh3e.item.equipped"}}</th>
+        {{> controlsEditDeleteHeader title=(localize "wh3e.sheet.addarmor") type="armor"}}
+      </tr>
+    </thead>
+    <tbody class="item-list">
+      {{#each armor as |armor id|}}
+        <tr data-item-id="{{armor._id}}" class="item">
+          <td class="item-image">
+            <a class="item-description">
+              <span class="item-info" style="background-image: url({{armor.img}})"></span>
+            </a>
+          </td>
+          <td class="align-left armor-name" title="{{{stripHtml armor.data.description}}}">
+            <span>{{armor.name}}</span>
+          </td>
+          <td class="armor-ac">
+            <span>{{getTextFromKey "wh3e.armorClasses" armor.data.armorClass}}</span>
+          </td>
+          {{> controlsEquipStore name=armor.name status=armor.data.equippedStatus}}
+          {{> controlsEditDelete editTitle=(localize "wh3e.sheet.editarmor") deleteTitle=(localize
+        "wh3e.sheet.deletearmor") }}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

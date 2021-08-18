@@ -149,13 +149,13 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
   let targetAC = 0;
   if (game.user.targets.size === 1) {
     for (let t of game.user.targets.values()) {
-      targetAC = t.sheet.actor.data.data.combat.armourClass;
+      targetAC = t.sheet.actor.data.data.combat.armorClass;
       targetName = t.nameplate.text;
     }
   }
 
   const toHitTarget = actor.data.data.combat.attackValue + strMod + toHitMod;
-  const rollTemplate = "systems/whitehack3e/templates/chat/attack-roll.hbs";
+  const rollTemplate = "systems/ultraviolethack/templates/chat/attack-roll.hbs";
 
   // To Hit Roll
   const toHitRoll = await new Roll(getDiceToRoll(rollType), rollData).evaluate({ async: true });
@@ -181,7 +181,7 @@ export const attackRoll = async (weapon, toHitMod = 0, damageMod = 0, rollType =
     formula: getRollTypeText(rollType, toHitRoll.formula),
     rollResult: toHitResult,
     toHitHeader: `${toHitHeader} ${toHitResultCategoryWith}`,
-    rollResultColour: toHitOutcome === c.SUCCESS ? c.WHITE : c.RED,
+    rollResultColour: toHitOutcome === c.SUCCESS ? c.LIGHTGREY : c.DARKRED,
   };
 
   if (toHitOutcome === c.SUCCESS) {
@@ -236,11 +236,14 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
   let rollValue = 0;
   if (rollFor === c.SAVINGTHROW) {
     rollValue = actor.data.data.savingThrow;
-  } else {
+  } else if (rollFor === c.Fortune) {
+      rollValue = actor.data.data.fortune;
+    }
+   else {
     rollValue = actor.data.data.attributes[rollFor].value;
   }
   const rollTarget = rollValue + rollMod;
-  const rollTemplate = "systems/whitehack3e/templates/chat/task-roll.hbs";
+  const rollTemplate = "systems/ultraviolethack/templates/chat/task-roll.hbs";
 
   // Check for extreme score
   if (rollTarget < 1) {
@@ -267,7 +270,7 @@ const taskRoll = async (actor, rollMod, rollFor, rollType) => {
     formula: getRollTypeText(rollType, roll.formula),
     rollResult: rollResult,
     resultHeader: resultHeader,
-    rollResultColour: rollOutcome === c.SUCCESS ? c.WHITE : c.RED,
+    rollResultColour: rollOutcome === c.SUCCESS ? c.LIGHTGREY : c.DARKRED,
   };
 
   if (game.dice3d) {
@@ -340,9 +343,12 @@ const getDiceToRoll = (rollType) => {
 const getRollResultHeader = (rollFor, rollTarget, rollResult, rollType, diceOne, diceTwo, rollOutcome) => {
   let resultHeader = c.EMPTYSTRING;
   if (rollFor === c.SAVINGTHROW) {
-    resultHeader ="Saving throw with a base score of ";
-  } else {
-    resultHeader = rollFor.toUpperCase() + " task roll with a base score of ";
+    resultHeader ="Saving throw with a score of ";
+  } else if (rollFor === c.FORTUNE) {
+    resultHeader ="Fortune Roll with a bonus of ";
+  }
+  else {
+    resultHeader = rollFor.toUpperCase() + " task roll with a score of ";
   }
   return (
     resultHeader +
@@ -368,7 +374,7 @@ const getToHitResultHeader = (toHitOutcome, toHitResult, weapon, toHitTarget, ta
   // To handle extreme rolls where AV is greater than 20
   if (toHitTarget >= 20) {
     // Add over 20 to quality
-    acHit = acHit + toHitTarget - 20;
+    acHit = acHit + toHitTarget;
   }
   let resultHeader = `${weapon} ${attackVsTarget} ${hitsAC} ${acHit}`;
   if (toHitOutcome === c.SUCCESS) {
@@ -380,7 +386,7 @@ const getToHitResultHeader = (toHitOutcome, toHitResult, weapon, toHitTarget, ta
       if (toHitResult > targetAC) {
         resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.misses")} ${targetName}`;
       } else {
-        resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.blockedByArmour")} ${targetName}`;
+        resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.blockedByarmor")} ${targetName}`;
       }
     } else {
       resultHeader = `${weapon} ${attackVsTarget} ${game.i18n.localize("wh3e.combat.misses")}`;
@@ -413,14 +419,14 @@ const getDamageResultHeader = (weapon, damageResult) => {
 const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, diceOutcome, rollFor = null) => {
   let category = [];
   if (diceOutcome === c.SUCCESS) {
-    let extremeRollQuality = game.i18n.localize("wh3e.dice.withQuality") + " " + rollResult.toString();
+    let extremeRollQuality = game.i18n.localize("wh3e.dice.withQuality") + " " + (parseInt(rollResult)+parseInt(rollTarget)).toString();
     if (diceOne === diceTwo && rollType === c.DOUBLEPOSITIVE && diceOutcome === c.SUCCESS) {
       category.push(game.i18n.localize("wh3e.dice.successfulPositivePair"));
     }
     // If extreme roll will crit on 19, so target becomes 19
     if (rollTarget >= 20) {
       extremeRollQuality =
-        game.i18n.localize("wh3e.dice.withQuality") + " " + (rollResult + rollTarget - 20).toString();
+        game.i18n.localize("wh3e.dice.withQuality") + " " + (parseInt(rollResult)+parseInt(rollTarget)).toString();
       rollTarget = 19;
     }
     if (rollResult === rollTarget) {
@@ -441,7 +447,8 @@ const getResultCategory = (rollTarget, rollResult, rollType, diceOne, diceTwo, d
       category.push(game.i18n.localize("wh3e.dice.fumble"));
     }
     if (category.length === 0 && rollFor) {
-      category.push(game.i18n.localize("wh3e.dice.failure"));
+      category.push(game.i18n.localize("wh3e.dice.failure") + " " + game.i18n.localize("wh3e.dice.withQuality") + " " +
+      (parseInt(rollResult)+parseInt(rollTarget)).toString());
     }
   }
   return category.join(" ");

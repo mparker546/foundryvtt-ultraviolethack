@@ -1,11 +1,11 @@
-import { updateActorGroups, updateActorEncumbrance, updateActorArmourClass } from "../helpers/itemHelpers.js";
+import { updateActorGroups, updateActorEncumbrance, updateActorarmorClass } from "../helpers/itemHelpers.js";
 import { rollModDialog, attackRollDialog } from "../helpers/diceHelpers.js";
 import * as c from "../constants.js";
 
 export default class WH3CharacterSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      template: "systems/whitehack3e/templates/sheets/character-sheet.hbs",
+      template: "systems/ultraviolethack/templates/sheets/character-sheet.hbs",
       classes: ["wh3e", "sheet", "character"],
       width: 630,
       height: 625,
@@ -30,9 +30,9 @@ export default class WH3CharacterSheet extends ActorSheet {
     actorData.hasGroups = !!actorData.abilities.filter((item) => {
       return groups.includes(item.data.type);
     });
-    actorData.armour = data.items.filter((item) => item.type === c.ARMOUR);
+    actorData.armor = data.items.filter((item) => item.type === c.armor);
     if (!actorData.data.basics.species) {
-      actorData.data.basics.species = game.settings.get("whitehack3e", "defaultSpecies");
+      actorData.data.basics.species = game.settings.get("ultraviolethack", "defaultSpecies");
     }
     actorData.charClass = actorData.data.basics.class;
     actorData.hasToken = !(this.token === null);
@@ -50,6 +50,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       html.find(".item-edit").click(this._itemEditHandler.bind(this));
       html.find(".item-delete").click(this._itemDeleteHandler.bind(this));
       html.find(".attribute-score").change(this._attributeChangeHandler.bind(this));
+//      html.find(".attribute-bonus").change(this._attributeBonusHandler.bind(this));
       html.find(".ability-activated i").click(this._abilityChangeStatusHandler.bind(this));
       html.find(".equippable i").click(this._gearChangeEquippedStatusHandler.bind(this));
       html.find(".manage-groups").click(this._groupsChangeHandler.bind(this));
@@ -95,10 +96,10 @@ export default class WH3CharacterSheet extends ActorSheet {
       itemData.data.equippedStatus = c.STORED;
     }
 
-    if (type === c.ARMOUR) {
-      itemData.data.armourClass = 0;
+    if (type === c.armor) {
+      itemData.data.armorClass = 0;
       itemData.data.equippedStatus = c.STORED;
-      itemData.img = c.DEFAULTARMOURIMAGE;
+      itemData.img = c.DEFAULTarmorIMAGE;
     }
 
     if (type === c.WEAPON) {
@@ -154,7 +155,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     const attrName = event.currentTarget.name.split(".")[2];
     const attrValue = event.currentTarget.value;
     let modObj = { [attrName + c.MOD]: 0 };
-
+    // Whtehack Attribute Mods
     // Set STR modifiers for attack and damage
     if (attrName === c.STR) {
       let strMod = 0,
@@ -195,9 +196,178 @@ export default class WH3CharacterSheet extends ActorSheet {
           },
         },
       });
+    };
+  };
+    ///Attribute Bonuses
+/**  async _attributeBonusHandler(event) {
+    const attrBonus = event.currentTarget.Bonus;
+    let bonusObj = { [attrName + c.BONUS]: 0 };
+
+    if (attrName === c.STR) {
+      let strBonus = 0;
+      if (attrValue >= 18) {
+        strBonus = 4;}
+        if (attrValue >= 16) {
+          strBonus = 3;}
+          if (attrValue >= 14) {
+            strBonus = 3;}
+            if (attrValue >= 12) {
+              strBonus = 1;}
+              if (attrValue >= 9) {
+                strBonus = 0;}
+                if (attrValue >= 7) {
+                  strBonus = -1;}
+                  if (attrValue >= 5) {
+                    strBonus = -2;}
+                    if (attrValue >= 3) {
+                      strBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.DEX) {
+      let dexBonus = 0;
+      if (attrValue >= 18) {
+        dexBonus = 4;}
+        else if (attrValue >= 16) {
+          dexBonus = 3;}
+          else if (attrValue >= 14) {
+            dexBonus = 3;}
+            else if (attrValue >= 12) {
+              dexBonus = 1;}
+              else if (attrValue >= 9) {
+                dexBonus = 0;}
+                else if (attrValue >= 7) {
+                  dexBonus = -1;}
+                  else if (attrValue >= 5) {
+                    dexBonus = -2;}
+                    else if (attrValue >= 3) {
+                      dexBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.CON) {
+      let conBonus = 0;
+      if (attrValue >= 18) {
+        conBonus = 4;}
+        else if (attrValue >= 16) {
+          conBonus = 3;}
+          else if (attrValue >= 14) {
+            conBonus = 3;}
+            else if (attrValue >= 12) {
+              conBonus = 1;}
+              else if (attrValue >= 9) {
+                conBonus = 0;}
+                else if (attrValue >= 7) {
+                  conBonus = -1;}
+                  else if (attrValue >= 5) {
+                    conBonus = -2;}
+                    else if (attrValue >= 3) {
+                      conBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.INT) {
+      let intBonus = 0;
+      if (attrValue >= 18) {
+        intBonus = 4;}
+        else if (attrValue >= 16) {
+          intBonus = 3;}
+          else if (attrValue >= 14) {
+            intBonus = 3;}
+            else if (attrValue >= 12) {
+              intBonus = 1;}
+              else if (attrValue >= 9) {
+                intBonus = 0;}
+                else if (attrValue >= 7) {
+                  intBonus = -1;}
+                  else if (attrValue >= 5) {
+                    intBonus = -2;}
+                    else if (attrValue >= 3) {
+                      intBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.WIS) {
+      let wisBonus = 0;
+      if (attrValue >= 18) {
+        wisBonus = 4;}
+        else if (attrValue >= 16) {
+          wisBonus = 3;}
+          else if (attrValue >= 14) {
+            wisBonus = 3;}
+            else if (attrValue >= 12) {
+              wisBonus = 1;}
+              else if (attrValue >= 9) {
+                wisBonus = 0;}
+                else if (attrValue >= 7) {
+                  wisBonus = -1;}
+                  else if (attrValue >= 5) {
+                    wisBonus = -2;}
+                    else if (attrValue >= 3) {
+                      wisBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
+            },
+          },
+        },
+      });
+    } else if (attrName !== c.CHA) {
+      let chaBonus = 0;
+      if (attrValue >= 18) {
+        chaBonus = 4;}
+        else if (attrValue >= 16) {
+          chaBonus = 3;}
+          else if (attrValue >= 14) {
+            chaBonus = 3;}
+            else if (attrValue >= 12) {
+              chaBonus = 1;}
+              else if (attrValue >= 9) {
+                chaBonus = 0;}
+                else if (attrValue >= 7) {
+                  chaBonus = -1;}
+                  else if (attrValue >= 5) {
+                    chaBonus = -2;}
+                    else if (attrValue >= 3) {
+                      chaBonus = -3}
+      await this.actor.update({
+        data: {
+          attributes: {
+            [attrName]: {
+                bonus: bonusObj[attrName + c.BONUS],
+            },
+          },
+        },
+      });
     }
   }
-
+**/
   /**
    * Update active status for ability
    * @param {Object} event
@@ -223,7 +393,7 @@ export default class WH3CharacterSheet extends ActorSheet {
       },
     });
     await updateActorEncumbrance(this.actor);
-    await updateActorArmourClass(this.actor);
+    await updateActorarmorClass(this.actor);
   }
 
   /**

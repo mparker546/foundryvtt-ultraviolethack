@@ -356,10 +356,10 @@
 }
 .gear .fixed_header th.equippable,
 .weapons .fixed_header th.equippable,
-.armour .fixed_header th.equippable,
+.armor .fixed_header th.equippable,
 .gear .fixed_header td.equippable,
 .weapons .fixed_header td.equippable,
-.armour .fixed_header td.equippable {
+.armor .fixed_header td.equippable {
   width: 14%;
   min-width: 80px;
 }
@@ -455,27 +455,27 @@
   width: 12%;
   min-width: 70px;
 }
-.armour .fixed_header th,
-.armour .fixed_header td {
+.armor .fixed_header th,
+.armor .fixed_header td {
   width: 21%;
   min-width: 120px;
 }
-.armour .fixed_header th.item-controls,
-.armour .fixed_header td.item-controls {
+.armor .fixed_header th.item-controls,
+.armor .fixed_header td.item-controls {
   width: 10%;
   min-width: 60px;
   text-align: center;
 }
-.armour .fixed_header th.item-image,
-.armour .fixed_header td.item-image {
+.armor .fixed_header th.item-image,
+.armor .fixed_header td.item-image {
   width: 6%;
   min-width: 34px;
 }
-.armour .fixed_header th.align-left,
-.armour .fixed_header td.align-left {
+.armor .fixed_header th.align-left,
+.armor .fixed_header td.align-left {
   text-align: left;
 }
-.armour .fixed_header .armour-name {
+.armor .fixed_header .armor-name {
   width: 50%;
   min-width: 290px;
 }
@@ -544,10 +544,12 @@ input.center-text {
   font-size: 0.75em;
 }
 .character .stats,
+.character .bonus,
 .monster .stats {
   background-color: rgba(0, 0, 0, 0.2);
 }
 .character .stats .headings,
+.character .bonus .headings,
 .monster .stats .headings {
   background: rgba(0, 0, 0, 0.5);
   color: #f0f0e0;
@@ -555,7 +557,8 @@ input.center-text {
   border-bottom: 1px solid #000;
 }
 .character .stats .headings span,
-.monster .stats .headings span {
+.monster .stats .headings span,
+.character .bonus .headings span {
   font-weight: bold;
 }
 .character .stats .attribute .groups,
@@ -585,7 +588,8 @@ input.center-text {
   border-left-color: #dbd196;
 }
 .character .stats .attribute input,
-.monster .stats .attribute input {
+.monster .stats .attribute input,
+.character .bonus .bonus input, {
   height: 32px;
 }
 .character .sheet-header {

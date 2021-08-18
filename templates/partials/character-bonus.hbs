@@ -1,0 +1,32 @@
+<div class="tab bonus" data-group="primary" data-tab="bonus">
+  <div class="bonus">
+    <div class="headings flexrow flex-group-center">
+      <span class="flex-grow1">{{localize "wh3e.category.attr"}}</span>
+      <span class="flex-grow1">{{localize "wh3e.attribute.bonus"}}</span>
+      <span class="flex-grow1">{{localize "wh3e.attribute.damage"}}</span>
+      <span class="flex-grow2">{{" "}}</span>
+    </div>
+     {{#each data.attributes as |attribute key|}}
+    <div class="attributeBonus flexrow flex-group-center">
+      <label for="data.attributes.{{key}}.bonus" class="flex-grow1 rollable" data-roll-for="{{key}}"><span
+          class="fas fa-dice"></span>{{getTextFromKey "wh3e.attribute" key}}</label>
+      <input type="text" name="data.attributes.{{key}}.bonus" value="{{attribute.bonus}}" data-dtype="Number"
+          class="flex-grow1 attribute-bonus" />
+      <input type="text" name="data.attributes.{{key}}.damage" value="{{attribute.damage}}" data-dtype="Number"
+          class="flex-grow1 attribute-damage" />
+      <div class="flex-grow1"></div>
+    </div>
+    {{/each}}
+    <div class="fortune flexrow flex-group-center">
+      <div class="col-1"></div>
+        <label for="data.fortune" class="rollable fortune" data-roll-for="fortune"><i
+             class="fas fa-dice"></i>&nbsp;{{localize
+              "wh3e.actor.fortune"}}</label>
+        <div class="fortune flexrow flex-group-center">
+          <input type="text" name="data.fortune" value="{{data.fortune}}" data-dtype="Number"
+                 title="{{localize "wh3e.tooltip.fortune"}}" />
+        </div>
+        <div class="flex-grow3"></div>
+    </div>
+  </div>
+</div>

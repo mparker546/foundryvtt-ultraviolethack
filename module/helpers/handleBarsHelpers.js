@@ -38,8 +38,8 @@ export const registerHelpers = async () => {
    */
   Handlebars.registerHelper("getBurdenCategory", (equipped, stored) => {
     const totalEncumbrance = equipped + stored;
-    const encumbranceLimit = game.settings.get("whitehack3e", "itemsEquippedLimit")
-      + game.settings.get("whitehack3e", "itemsStoredLimit")
+    const encumbranceLimit = game.settings.get("ultraviolethack", "itemsEquippedLimit")
+      + game.settings.get("ultraviolethack", "itemsStoredLimit")
     if (totalEncumbrance <= encumbranceLimit) {
       return game.i18n.localize("wh3e.burdenCategory.normal");
     } else if (totalEncumbrance <= encumbranceLimit * 2) {
@@ -74,8 +74,8 @@ export const registerHelpers = async () => {
 
   Handlebars.registerHelper("encumbered", (encumbrance, encType) => {
     if (
-      (encType === c.EQUIPPED && encumbrance > game.settings.get("whitehack3e", "itemsEquippedLimit")) ||
-      (encType === c.STORED && encumbrance > game.settings.get("whitehack3e", "itemsStoredLimit"))
+      (encType === c.EQUIPPED && encumbrance > game.settings.get("ultraviolethack", "itemsEquippedLimit")) ||
+      (encType === c.STORED && encumbrance > game.settings.get("ultraviolethack", "itemsStoredLimit"))
     ) {
       return true;
     }

@@ -4,7 +4,7 @@ import * as c from "../constants.js";
 export default class WH3MonsterSheet extends ActorSheet {
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      template: "systems/whitehack3e/templates/sheets/monster-sheet.hbs",
+      template: "systems/ultraviolethack/templates/sheets/monster-sheet.hbs",
       classes: ["wh3e", "sheet", "monster"],
       width: 600,
       height: 450,
