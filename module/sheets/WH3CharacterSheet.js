@@ -30,7 +30,7 @@ export default class WH3CharacterSheet extends ActorSheet {
     actorData.hasGroups = !!actorData.abilities.filter((item) => {
       return groups.includes(item.data.type);
     });
-    actorData.armor = data.items.filter((item) => item.type === c.armor);
+    actorData.armor = data.items.filter((item) => item.type === c.ARMOR);
     if (!actorData.data.basics.species) {
       actorData.data.basics.species = game.settings.get("ultraviolethack", "defaultSpecies");
     }
