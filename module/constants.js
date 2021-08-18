@@ -1,7 +1,7 @@
 export const CHARACTER = "Character";
 export const MONSTER = "Monster";
 export const ABILITY = "Ability";
-export const armor = "Armor";
+export const ARMOR = "Armor";
 export const GEAR = "Gear";
 export const WEAPON = "Weapon";
 export const ACTIVE = "active";
